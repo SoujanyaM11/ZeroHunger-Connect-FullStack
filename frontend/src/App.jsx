@@ -1796,7 +1796,11 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
     const token = localStorage.getItem("zhc_token");
-    const socket = io(window.location.origin, { auth: { token } });
+
+const socket = io(
+  import.meta.env.VITE_SOCKET_URL || window.location.origin,
+  { auth: { token } }
+);
     socketRef.current = socket;
 
     socket.on("match_confirmed", data => {

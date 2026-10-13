@@ -1,5 +1,7 @@
 // src/api.js — Zero Hunger Connect API client v2
-const BASE = "/api";
+
+const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+const BASE = API_URL + "/api";
 
 function getToken() {
   return localStorage.getItem("zhc_token");
